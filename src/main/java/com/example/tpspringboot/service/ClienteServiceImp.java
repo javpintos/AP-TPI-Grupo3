@@ -1,7 +1,9 @@
 package com.example.tpspringboot.service;
 
 import com.example.tpspringboot.entity.Cliente;
+import com.example.tpspringboot.entity.Incidente;
 import com.example.tpspringboot.repository.ClienteRepository;
+import com.example.tpspringboot.repository.IncidenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +27,8 @@ public class ClienteServiceImp implements ClienteService {
 
     @Override
     public Cliente updateCliente(Cliente cliente, Long id) {
-        Cliente clienteDB = clienteRepository.getReferenceById(id);
+        //Cliente clienteDB = clienteRepository.getReferenceById(id);
+        Cliente clienteDB = clienteRepository.findById(id).get();
         if(!cliente.getRazonSocial().trim().isEmpty()){
             clienteDB.setRazonSocial(cliente.getRazonSocial());
         }
@@ -42,5 +45,15 @@ public class ClienteServiceImp implements ClienteService {
     @Override
     public void deleteClienteById(Long id) {
         clienteRepository.deleteById(id);
+    }
+
+    @Override
+    public Cliente findClienteById(Long id) {
+        return clienteRepository.getReferenceById(id);
+    }
+
+    @Override
+    public Cliente getClienteByRazonSocialAndCUIT(String razonSocial, String cuit){
+        return clienteRepository.getClienteByRazonSocialAndCUIT(razonSocial, cuit);
     }
 }
