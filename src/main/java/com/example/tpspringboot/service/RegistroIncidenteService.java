@@ -17,6 +17,6 @@ public interface RegistroIncidenteService {
     int getCantidadResueltosByTecnicoId (Long id);
     int getCantRtosByTecnicoIdIncidenteID (Long tecnico_id, Long incidente_id);
     RegistroIncidente findRegistroIncidenteById(Long id);
-    Tecnico findAllTecnicosByIncidenciaResueltaEntreFechas(Date fechaIncidente, Date fechaResolucion);
-    RegistroIncidente getIncidentesByDate(Date fechaIncidente);
+    List<Tecnico> findAllTecnicosByIncidenciaResueltaEntreFechas(Date fechaIncidente, Date fechaResolucion);
+    List<RegistroIncidente> getIncidentesByDate(Date fechaIncidente);
 }

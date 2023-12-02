@@ -64,12 +64,12 @@ public class RegistroIncidenteServiceImp implements RegistroIncidenteService{
     }
 
     @Override
-    public Tecnico findAllTecnicosByIncidenciaResueltaEntreFechas(Date fechaIncidente, Date fechaResolucion) {
+    public List<Tecnico> findAllTecnicosByIncidenciaResueltaEntreFechas(Date fechaIncidente, Date fechaResolucion) {
         return registroIncidenteRepository.findAllTecnicosByIncidenciaResueltaEntreFechas(fechaIncidente,fechaResolucion);
     }
 
     @Override
-    public RegistroIncidente getIncidentesByDate(Date fechaIncidente) {
+    public List<RegistroIncidente> getIncidentesByDate(Date fechaIncidente) {
         return registroIncidenteRepository.getIncidentesByDate(fechaIncidente);
     }
 
