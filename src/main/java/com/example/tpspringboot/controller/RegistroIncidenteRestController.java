@@ -225,8 +225,9 @@ public class RegistroIncidenteRestController {
     }
 
     @GetMapping("/registroIncidentes/getIncidentesByDate")
-    public RegistroIncidente getIncidentesByDate (@RequestParam("fechaIncidente") Date fecha_incidente){
-        return registroIncidenteService.getIncidentesByDate(fecha_incidente);
+    public ResponseEntity<RegistroIncidente> getIncidentesByDate (@RequestParam("fechaIncidente") Date fecha_incidente){
+        List <RegistroIncidente> registros = registroIncidenteService.getIncidentesByDate(fecha_incidente);
+        return new ResponseEntity<>(registros,HttpStatus.OK);
     }
 
 }

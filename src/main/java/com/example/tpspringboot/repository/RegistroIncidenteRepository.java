@@ -40,8 +40,7 @@ public interface RegistroIncidenteRepository extends JpaRepository<RegistroIncid
 
     //Para emitir reportes diarios de los incidentes asignados a cada tecnico y su estado
     //@Query("SELECT ri.tecnico.id, ri.incidente.id, ri.resuelto FROM RegistroIncidente ri WHERE ri.fechaIncidente= :fecha_incidente")
-    @Query("SELECT ri FROM RegistroIncidente ri WHERE ri.fechaIncidente= :fecha_incidente " +
-            "GROUP BY ri.tecnico.id")
+    @Query("SELECT ri FROM RegistroIncidente ri WHERE ri.fechaIncidente= :fecha_incidente")
 /*
     @Query (" SELECT t FROM Tecnico as t "+
             " WHERE t.id =  ( SELECT ri.tecnico.id FROM RegistroIncidente as ri "+
@@ -51,6 +50,6 @@ public interface RegistroIncidenteRepository extends JpaRepository<RegistroIncid
 
  */
 
-    RegistroIncidente getIncidentesByDate(@Param("fecha_incidente") Date fechaIncidente);//group by
+    List<RegistroIncidente> getIncidentesByDate(@Param("fecha_incidente") Date fechaIncidente);//group by
 
 }

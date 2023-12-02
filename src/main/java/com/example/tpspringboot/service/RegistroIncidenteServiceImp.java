@@ -69,7 +69,7 @@ public class RegistroIncidenteServiceImp implements RegistroIncidenteService{
     }
 
     @Override
-    public RegistroIncidente getIncidentesByDate(Date fechaIncidente) {
+    public List<RegistroIncidente> getIncidentesByDate(Date fechaIncidente) {
         return registroIncidenteRepository.getIncidentesByDate(fechaIncidente);
     }
 
