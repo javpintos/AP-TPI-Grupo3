@@ -222,8 +222,9 @@ public class RegistroIncidenteRestController {
     }
 
     @GetMapping("/registroIncidentes/findAllTecnicosByIncidenciaResueltaEntreFechas")//no sé que poner en vez de {id} va {fechaIncidente}
-    public Tecnico findAllTecnicosByIncidenciaResueltaEntreFechas (@RequestParam("fechaIncidente") Date fecha_incidente, @RequestParam("fechaResolucion") Date fecha_resolucion){
-        return registroIncidenteService.findAllTecnicosByIncidenciaResueltaEntreFechas(fecha_incidente, fecha_resolucion);
+    public ResponseEntity<List<Tecnico>> findAllTecnicosByIncidenciaResueltaEntreFechas (@RequestParam("fechaIncidente") Date fecha_incidente, @RequestParam("fechaResolucion") Date fecha_resolucion){
+        List<Tecnico> tecnicos = registroIncidenteService.findAllTecnicosByIncidenciaResueltaEntreFechas(fecha_incidente, fecha_resolucion);
+        return new ResponseEntity<>(tecnicos,HttpStatus.OK);
     }
 
     @GetMapping("/registroIncidentes/getIncidentesByDate")

@@ -32,7 +32,7 @@ public interface RegistroIncidenteRepository extends JpaRepository<RegistroIncid
             " WHERE ri.resuelto = TRUE "+
             " AND ri.fechaEstimada BETWEEN :fecha_incidente AND :fecha_resolucion "+
             " GROUP BY ri.tecnico.id ORDER BY COUNT(ri.id) DESC LIMIT 1) ")
-    public Tecnico findAllTecnicosByIncidenciaResueltaEntreFechas(@Param("fecha_incidente") Date fechaIncidente,
+    public List<Tecnico> findAllTecnicosByIncidenciaResueltaEntreFechas(@Param("fecha_incidente") Date fechaIncidente,
                                                                   @Param("fecha_resolucion")Date fechaResolucion
                                                                   );
 
