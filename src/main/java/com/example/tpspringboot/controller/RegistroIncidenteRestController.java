@@ -3,6 +3,8 @@ package com.example.tpspringboot.controller;
 import com.example.tpspringboot.entity.*;
 import com.example.tpspringboot.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -225,9 +227,9 @@ public class RegistroIncidenteRestController {
     }
 
     @GetMapping("/registroIncidentes/getIncidentesByDate")
-    public ResponseEntity<RegistroIncidente> getIncidentesByDate (@RequestParam("fechaIncidente") Date fecha_incidente){
+    public ResponseEntity<List<RegistroIncidente>> getIncidentesByDate (@RequestParam("fechaIncidente") Date fecha_incidente){
         List <RegistroIncidente> registros = registroIncidenteService.getIncidentesByDate(fecha_incidente);
-        return new ResponseEntity<>(registros,HttpStatus.OK);
+        return new ResponseEntity<>(registros, HttpStatus.OK);
     }
 
 }
